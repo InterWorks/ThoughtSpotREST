@@ -9,12 +9,12 @@ class ComposerStaticInit7e36a2233f19cd56a9d5b02020d22b52
     public static $prefixLengthsPsr4 = array (
         'I' => 
         array (
-            'Interworks\\ThoughtSpotRest\\' => 27,
+            'InterWorks\\ThoughtSpotREST\\' => 27,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Interworks\\ThoughtSpotRest\\' => 
+        'InterWorks\\ThoughtSpotREST\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
