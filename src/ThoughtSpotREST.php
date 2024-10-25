@@ -51,15 +51,15 @@ class ThoughtSpotREST
     /**
      * Properties.
      */
-    private string $authType;
+    private string|null $authType;
     private string $authCacheKey;
     private string|null $cookies;
     private string|null $password;
     private bool $returnResponseObject;
     private string|null $secretKey;
     private string|null $token;
-    private string $url;
-    private string $username;
+    private string|null $url;
+    private string|null $username;
 
     /**
      * Constructor for the ThoughtSpotREST class.
