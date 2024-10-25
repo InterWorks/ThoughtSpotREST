@@ -451,7 +451,7 @@ class ThoughtSpotREST
         }
 
         // If the URL is null, throw an exception
-        if (is_null($this->url)) {
+        if (empty($this->url)) {
             throw new Exception(
                 'The ThoughtSpot URL is not set. '
                 . 'Add THOUGHTSPOT_REST_URL to your .env file.'
