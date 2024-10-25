@@ -104,4 +104,4 @@ $liveboards = $response->json();
 
 ## License
 
-Faker is released under the MIT License. See [`LICENSE`](LICENSE) for details.
+This package is released under the MIT License. See [`LICENSE`](LICENSE) for details.
