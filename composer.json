@@ -1,0 +1,25 @@
+{
+    "name": "interworks/thoughtspot-rest",
+    "description": "This package allows simple REST API communication with your ThoughtSpot cluster.",
+    "version": "0.0.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "InterWorks\\ThoughtSpotREST\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "InterWorks\\ThoughtSpotREST\\ThoughtSpotRESTServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Justin Lyons",
+            "email": "justin.lyons@interworks.com"
+        }
+    ],
+    "require": {}
+}
