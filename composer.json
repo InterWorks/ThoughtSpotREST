@@ -1,7 +1,6 @@
 {
     "name": "interworks/thoughtspot-rest",
     "description": "This package allows simple REST API communication with your ThoughtSpot cluster.",
-    "version": "0.0.1",
     "license": "MIT",
     "autoload": {
         "psr-4": {
