@@ -22,10 +22,10 @@ class ThoughtSpotRESTServiceProvider extends ServiceProvider
      */
     public function registerConfig(): void
     {
-        $config = __DIR__ . '/../config/thoughtspot-rest.php';
+        $config = __DIR__ . '/../config/thoughtspotrest.php';
 
-        $this->publishes([$config => config_path('thoughtspot-rest.php')]);
+        $this->publishes([$config => config_path('thoughtspotrest.php')]);
 
-        $this->mergeConfigFrom($config, 'thoughtspot-rest');
+        $this->mergeConfigFrom($config, 'thoughtspotrest');
     }
 }

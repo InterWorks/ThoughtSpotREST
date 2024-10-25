@@ -1,5 +1,5 @@
 {
-    "name": "interworks/thoughtspot-rest",
+    "name": "interworks/thoughtspotrest",
     "description": "This package allows simple REST API communication with your ThoughtSpot cluster.",
     "license": "MIT",
     "autoload": {

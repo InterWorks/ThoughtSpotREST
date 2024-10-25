@@ -9,7 +9,7 @@ This is a simple API for calling REST API's against your ThoughtSpot cluster. It
 Requires PHP >= 8.2.
 
 ```shell
-composer require interworks/thoughtspot-rest
+composer require interworks/thoughtspotrest
 ```
 
 Next, add the following required environment variables to your .env file:

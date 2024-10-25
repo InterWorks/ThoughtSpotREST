@@ -69,14 +69,14 @@ class ThoughtSpotREST
     public function __construct(bool $returnResponseObject = false)
     {
         // Set the properties
-        $this->authType             = config('thoughtspot-rest.auth');
+        $this->authType             = config('thoughtspotrest.auth');
         $this->cookies              = null; // Set later depending on auth type
-        $this->password             = config('thoughtspot-rest.password');
+        $this->password             = config('thoughtspotrest.password');
         $this->returnResponseObject = $returnResponseObject;
-        $this->secretKey            = config('thoughtspot-rest.secret_key');
+        $this->secretKey            = config('thoughtspotrest.secret_key');
         $this->token                = null; // Set later depending on auth type
-        $this->url                  = rtrim(config('thoughtspot-rest.url'), '/');
-        $this->username             = config('thoughtspot-rest.username');
+        $this->url                  = rtrim(config('thoughtspotrest.url'), '/');
+        $this->username             = config('thoughtspotrest.username');
 
         // Validate the environment
         $this->_validateEnvironment();
@@ -484,7 +484,7 @@ class ThoughtSpotREST
         }
 
         // Set the auth cache key
-        $this->authCacheKey = 'thoughtspot-rest-auth'
+        $this->authCacheKey = 'thoughtspotrest-auth'
             . '-' . $this->authType
             . '-' . $this->username
             . '-' . ($this->password ?? 'null')

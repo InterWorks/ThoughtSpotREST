@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'interworks/thoughtspot-rest',
+        'name' => 'interworks/thoughtspotrest',
         'pretty_version' => '0.0.1',
         'version' => '0.0.1.0',
         'reference' => null,
@@ -10,7 +10,7 @@
         'dev' => true,
     ),
     'versions' => array(
-        'interworks/thoughtspot-rest' => array(
+        'interworks/thoughtspotrest' => array(
             'pretty_version' => '0.0.1',
             'version' => '0.0.1.0',
             'reference' => null,
