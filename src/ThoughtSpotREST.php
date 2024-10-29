@@ -90,7 +90,7 @@ class ThoughtSpotREST
      *
      * @return void
      */
-    private function _authenticate(): void
+    protected function _authenticate(): void
     {
         // Authenticate based on the auth type
         if ($this->authType === 'basic') {
