@@ -21,6 +21,9 @@ jobs:
         php-version: '8.2' # Adjust PHP version as necessary
         extensions: mbstring, pdo, json, bcmath, ctype
 
+    - name: Clear Composer Cache
+      run: composer clear-cache
+
     - name: Install Dependencies
       run: composer install --prefer-dist --no-interaction --optimize-autoloader
 
