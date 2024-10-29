@@ -46,6 +46,11 @@ test('constructing with returnResponseObject set to true returns Illuminate\Http
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 

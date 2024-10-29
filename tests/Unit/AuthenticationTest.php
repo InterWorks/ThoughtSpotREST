@@ -11,6 +11,11 @@ test('getCurrentUserInfo returns Response when returnResponseObject is true', fu
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -35,6 +40,11 @@ test('getCurrentUserInfo returns array when returnResponseObject is false', func
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -61,6 +71,11 @@ test('getCurrentUserToken returns Response when returnResponseObject is true', f
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -85,6 +100,11 @@ test('getCurrentUserToken returns array when returnResponseObject is false', fun
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -111,6 +131,11 @@ test('getFullAccessToken returns Response when returnResponseObject is true', fu
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -135,6 +160,11 @@ test('getFullAccessToken returns array when returnResponseObject is false', func
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -162,6 +192,11 @@ test('getObjectAccessToken returns Response when returnResponseObject is true', 
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -186,6 +221,11 @@ test('getObjectAccessToken returns array when returnResponseObject is false', fu
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -212,6 +252,11 @@ test('login returns Response when returnResponseObject is true', function () {
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -236,6 +281,11 @@ test('login returns processed cookies as string when returnResponseObject is fal
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -268,6 +318,11 @@ test('logout returns Response when returnResponseObject is true', function () {
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -292,6 +347,11 @@ test('logout returns boolean when returnResponseObject is false', function () {
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -319,6 +379,11 @@ test('revokeToken returns Response when returnResponseObject is true', function 
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -343,6 +408,11 @@ test('revokeToken returns boolean when returnResponseObject is false', function 
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
@@ -370,6 +440,11 @@ test('validateToken returns Response when returnResponseObject is true', functio
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
+
     // Set returnResponseObject to true in the constructor
     $mock->__construct(returnResponseObject: true);
 
@@ -394,6 +469,11 @@ test('validateToken returns boolean when returnResponseObject is false', functio
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
+
+    // Ensure the _authenticate method is called in the constructor
+    $mock->shouldReceive('_authenticate')
+        ->once()
+        ->andReturnNull();
 
     // Set returnResponseObject to false in the constructor
     $mock->__construct(returnResponseObject: false);
