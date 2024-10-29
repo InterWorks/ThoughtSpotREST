@@ -5,7 +5,7 @@ use InterWorks\ThoughtSpotREST\ThoughtSpotREST;
 
 test('constructor initializes correctly with valid configuration', function () {
     // Mock the ThoughtSpotREST class, specifically to check if _authenticate is called
-    $mock = Mockery::mock(ThoughtSpotREST::class)->makePartial()->shouldAllowMockingProtectedMethods();
+    $mock = Mockery::mock(ThoughtSpotREST::class)->makePartial()->shouldAllowMockingMethod('_authenticate');
 
     // Ensure the _authenticate method is called in the constructor
     $mock->shouldReceive('_authenticate')
