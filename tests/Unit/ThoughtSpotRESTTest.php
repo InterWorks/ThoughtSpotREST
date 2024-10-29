@@ -1,6 +1,8 @@
 <?php
 
 use Mockery;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 use InterWorks\ThoughtSpotREST\ThoughtSpotREST;
 
 test('constructor initializes correctly with valid configuration', function () {
@@ -36,4 +38,30 @@ test('constructor throws exception with invalid configuration', function () {
 
     // Instantiate ThoughtSpotREST to trigger exception
     new ThoughtSpotREST();
+});
+
+test('constructing with returnResponseObject set to true returns Illuminate\Http\Client\Response', function () {
+    // Mock the ThoughtSpotREST class with partial methods
+    $mock = Mockery::mock(ThoughtSpotREST::class)
+        ->makePartial()
+        ->shouldAllowMockingProtectedMethods();
+
+    // Set returnResponseObject to true in the constructor
+    $mock->__construct(returnResponseObject: true);
+
+    // Fake a response to be used in the `call` method
+    $fakeResponse = Http::response(['data' => 'test'], 200);
+
+    // Mock the `call` method to return a Response instance
+    $mock->shouldReceive('call')
+         ->andReturn($fakeResponse);
+
+    // Call an API method that uses the `call` method internally
+    $result = $mock->getCurrentUserInfo();
+
+    // Assert that the result is an instance of Illuminate\Http\Client\Response
+    expect($result)->toBeInstanceOf(Response::class);
+
+    // Clean up Mockery expectations
+    Mockery::close();
 });
