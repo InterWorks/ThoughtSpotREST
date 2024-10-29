@@ -206,56 +206,6 @@ test('getObjectAccessToken returns array when returnResponseObject is false', fu
     Mockery::close();
 });
 
-test('getObjectAccessToken returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
-
-    // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response(['token' => 'object_access_token'], 200);
-
-    // Mock the `call` method to return the fake response
-    $mock->shouldReceive('call')
-         ->with('auth/token/object', ['object_id' => '12345'], 'POST')
-         ->andReturn($fakeResponse);
-
-    // Call getObjectAccessToken and assert it returns a Response instance
-    $result = $mock->getObjectAccessToken(['object_id' => '12345']);
-    expect($result)->toBeInstanceOf(Response::class);
-
-    // Clean up Mockery expectations
-    Mockery::close();
-});
-
-test('getObjectAccessToken returns array when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
-
-    // Fake a response to return JSON data
-    $fakeResponse = Http::response(['token' => 'object_access_token'], 200);
-
-    // Mock the `call` method to return the fake response
-    $mock->shouldReceive('call')
-         ->with('auth/token/object', ['object_id' => '12345'], 'POST')
-         ->andReturn($fakeResponse);
-
-    // Call getObjectAccessToken and assert it returns an array
-    $result = $mock->getObjectAccessToken(['object_id' => '12345']);
-    expect($result)->toBe(['token' => 'object_access_token']);
-
-    // Clean up Mockery expectations
-    Mockery::close();
-});
-
 test('login returns Response when returnResponseObject is true', function () {
     // Mock the ThoughtSpotREST class with partial methods
     $mock = Mockery::mock(ThoughtSpotREST::class)
