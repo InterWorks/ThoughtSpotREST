@@ -5,22 +5,29 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use InterWorks\ThoughtSpotREST\ThoughtSpotREST;
 
-test('getCurrentUserInfo returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
+function createThoughtSpotMock(bool $returnResponseObject = false)
+{
+    // Create and configure the mock
     $mock = Mockery::mock(ThoughtSpotREST::class)
         ->makePartial()
         ->shouldAllowMockingProtectedMethods();
 
-    // Ensure the _authenticate method is called in the constructor
+    // Ensure the _authenticate method is mocked
     $mock->shouldReceive('_authenticate')
         ->once()
         ->andReturnNull();
 
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    // Set returnResponseObject as needed
+    $mock->__construct(returnResponseObject: $returnResponseObject);
+
+    return $mock;
+}
+
+test('getCurrentUserInfo returns Response when returnResponseObject is true', function () {
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response(['data' => 'test'], 200);
+    $fakeResponse = new Response(Http::response(['data' => 'test'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -36,21 +43,10 @@ test('getCurrentUserInfo returns Response when returnResponseObject is true', fu
 });
 
 test('getCurrentUserInfo returns array when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to return JSON data
-    $fakeResponse = Http::response(['data' => 'test'], 200);
+    $fakeResponse = new Response(Http::response(['data' => 'test'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -66,21 +62,10 @@ test('getCurrentUserInfo returns array when returnResponseObject is false', func
 });
 
 test('getCurrentUserToken returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response(['token' => 'fake_token'], 200);
+    $fakeResponse = new Response(Http::response(['token' => 'fake_token'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -96,21 +81,10 @@ test('getCurrentUserToken returns Response when returnResponseObject is true', f
 });
 
 test('getCurrentUserToken returns array when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to return JSON data
-    $fakeResponse = Http::response(['token' => 'fake_token'], 200);
+    $fakeResponse = new Response(Http::response(['token' => 'fake_token'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -126,21 +100,10 @@ test('getCurrentUserToken returns array when returnResponseObject is false', fun
 });
 
 test('getFullAccessToken returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response(['token' => 'full_access_token'], 200);
+    $fakeResponse = new Response(Http::response(['token' => 'full_access_token'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -156,21 +119,10 @@ test('getFullAccessToken returns Response when returnResponseObject is true', fu
 });
 
 test('getFullAccessToken returns array when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to return JSON data
-    $fakeResponse = Http::response(['token' => 'full_access_token'], 200);
+    $fakeResponse = new Response(Http::response(['token' => 'full_access_token'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -187,21 +139,10 @@ test('getFullAccessToken returns array when returnResponseObject is false', func
 
 
 test('getObjectAccessToken returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response(['token' => 'object_access_token'], 200);
+    $fakeResponse = new Response(Http::response(['token' => 'object_access_token'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -217,21 +158,10 @@ test('getObjectAccessToken returns Response when returnResponseObject is true', 
 });
 
 test('getObjectAccessToken returns array when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to return JSON data
-    $fakeResponse = Http::response(['token' => 'object_access_token'], 200);
+    $fakeResponse = new Response(Http::response(['token' => 'object_access_token'], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -247,21 +177,10 @@ test('getObjectAccessToken returns array when returnResponseObject is false', fu
 });
 
 test('login returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response([], 200); // assuming empty response as cookies are not part of JSON
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -277,21 +196,10 @@ test('login returns Response when returnResponseObject is true', function () {
 });
 
 test('login returns processed cookies as string when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response with a mock for cookies
-    $fakeResponse = Http::response([], 200); // Assume empty JSON as cookies are set separately
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
     $fakeResponse->cookies = ['session_cookie=test_cookie_data']; // Simulated cookies array
 
     // Mock the `call` method to return the fake response
@@ -313,21 +221,10 @@ test('login returns processed cookies as string when returnResponseObject is fal
 });
 
 test('logout returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response([], 200); // Simulate a successful response
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -343,21 +240,10 @@ test('logout returns Response when returnResponseObject is true', function () {
 });
 
 test('logout returns boolean when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to simulate a successful response
-    $fakeResponse = Http::response([], 200); // 200 indicates success
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
     $fakeResponse->successful = fn() => true; // Mocking successful() method
 
     // Mock the `call` method to return the fake response
@@ -374,21 +260,10 @@ test('logout returns boolean when returnResponseObject is false', function () {
 });
 
 test('revokeToken returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response([], 200); // Simulate a successful response
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -404,21 +279,10 @@ test('revokeToken returns Response when returnResponseObject is true', function 
 });
 
 test('revokeToken returns boolean when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to simulate a successful response
-    $fakeResponse = Http::response([], 200); // 200 indicates success
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
     $fakeResponse->successful = fn() => true; // Mocking successful() method
 
     // Mock the `call` method to return the fake response
@@ -435,21 +299,10 @@ test('revokeToken returns boolean when returnResponseObject is false', function 
 });
 
 test('validateToken returns Response when returnResponseObject is true', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
+    $mock = createThoughtSpotMock(returnResponseObject: true);
 
     // Fake a response to be returned by the `call` method
-    $fakeResponse = Http::response([], 200); // Simulate a successful response
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
 
     // Mock the `call` method to return the fake response
     $mock->shouldReceive('call')
@@ -465,21 +318,10 @@ test('validateToken returns Response when returnResponseObject is true', functio
 });
 
 test('validateToken returns boolean when returnResponseObject is false', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to false in the constructor
-    $mock->__construct(returnResponseObject: false);
+    $mock = createThoughtSpotMock(returnResponseObject: false);
 
     // Fake a response to simulate a successful response
-    $fakeResponse = Http::response([], 200); // 200 indicates success
+    $fakeResponse = new Response(Http::response([], 200)->toPsrResponse());
     $fakeResponse->successful = fn() => true; // Mocking successful() method
 
     // Mock the `call` method to return the fake response
