@@ -1,0 +1,26 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2' # Adjust PHP version as necessary
+        extensions: mbstring, pdo, json, bcmath, ctype
+
+    - name: Install Dependencies
+      run: composer install --prefer-dist --no-interaction --optimize-autoloader
+
+    - name: Run Tests
+      run: vendor/bin/pest

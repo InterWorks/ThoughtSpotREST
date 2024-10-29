@@ -22,5 +22,14 @@
     ],
     "require": {
         "php": "^8.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.5",
+        "orchestra/testbench": "^9.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
