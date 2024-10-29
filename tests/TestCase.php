@@ -2,6 +2,7 @@
 
 namespace InterWorks\ThoughtSpotREST\Tests;
 
+use Illuminate\Contracts\Config\Repository;
 use InterWorks\ThoughtSpotREST\ThoughtSpotRESTServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
