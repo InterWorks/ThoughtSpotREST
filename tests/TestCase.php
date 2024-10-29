@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace InterWorks\ThoughtSpotREST\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 

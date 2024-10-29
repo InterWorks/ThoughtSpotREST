@@ -7,6 +7,11 @@
             "InterWorks\\ThoughtSpotREST\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "InterWorks\\ThoughtSpotREST\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
