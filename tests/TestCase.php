@@ -12,9 +12,4 @@ abstract class TestCase extends Orchestra
             \Interworks\ThoughtSpotREST\ThoughtSpotRESTServiceProvider::class,
         ];
     }
-
-    public function test_basic_functionality()
-    {
-        $this->assertTrue(true);
-    }
 }
