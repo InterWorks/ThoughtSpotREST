@@ -1,6 +1,6 @@
 <?php
 
-use Interworks\ThoughtSpot\ThoughtSpotREST;
+use InterWorks\ThoughtSpotREST\ThoughtSpotREST;
 
 test('can be initialized', function () {
     $ts = new ThoughtSpotREST();
