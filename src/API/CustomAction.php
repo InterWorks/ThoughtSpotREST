@@ -10,11 +10,11 @@ trait CustomAction
      * Creates a custom action that appears as a menu action on a saved Answer or Liveboard visualization.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/custom-action/create-custom-action
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createCustomAction(array $args = []): array|Response
+    public function createCustomAction(array $args = []): mixed
     {
         // Set up call
         $url = 'customization/custom-actions';
@@ -29,7 +29,7 @@ trait CustomAction
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
@@ -61,11 +61,11 @@ trait CustomAction
      * Gets custom actions configured on the cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/custom-action/search-custom-actions
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchCustomActions(array $args = []): array|Response
+    public function searchCustomActions(array $args = []): mixed
     {
         // Set up call
         $url = 'customization/custom-actions/search';
@@ -80,15 +80,15 @@ trait CustomAction
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates a custom action.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/custom-action/update-custom-action
      *
-     * @param string $customActionIdentifier
-     * @param array  $args
+     * @param string               $customActionIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

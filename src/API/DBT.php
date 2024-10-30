@@ -10,11 +10,11 @@ trait DBT
      * Creates a DBT connection object in ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/dbt/dbt-connection
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createDBTConnection(array $args = []): array|Response
+    public function createDBTConnection(array $args = []): mixed
     {
         // Set up call
         $url = 'dbt/dbt-connection';
@@ -29,15 +29,15 @@ trait DBT
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deletes a DBT connection object in ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/dbt/delete-dbt-connection
      *
-     * @param string $connectionIdentifier
-     * @param array  $args
+     * @param string               $connectionIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -63,11 +63,11 @@ trait DBT
      * Generates sync TML for a DBT connection.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/dbt/dbt-generate-sync-tml
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function generateDBTSyncTML(array $args = []): array|Response
+    public function generateDBTSyncTML(array $args = []): mixed
     {
         // Set up call
         $url = 'dbt/generate-sync-tml';
@@ -82,18 +82,18 @@ trait DBT
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets TML for a DBT connection object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/dbt/dbt-generate-tml
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function generateDBTTML(array $args = []): array|Response
+    public function generateDBTTML(array $args = []): mixed
     {
         // Set up call
         $url = 'dbt/generate-tml';
@@ -108,18 +108,18 @@ trait DBT
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Searches for DBT connection objects.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/dbt/dbt-search
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchDBTConnections(array $args = []): array|Response
+    public function searchDBTConnections(array $args = []): mixed
     {
         // Set up call
         $url = 'dbt/search';
@@ -134,18 +134,18 @@ trait DBT
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates a DBT connection object in ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/dbt/update-dbt-connection
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function updateDBTConnection(array $args = []): array|Response
+    public function updateDBTConnection(array $args = []): mixed
     {
         // Set up call
         $url = 'dbt/update-dbt-connection';
@@ -160,6 +160,6 @@ trait DBT
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 }

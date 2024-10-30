@@ -10,9 +10,9 @@ trait Authentication
      * Gets session information for the currently logged-in user.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/authentication/get-current-user-info
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function getCurrentUserInfo(): array|Response
+    public function getCurrentUserInfo(): mixed
     {
         // Set up call
         $url = 'auth/session/user';
@@ -26,16 +26,16 @@ trait Authentication
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets token details for the currently logged-in user.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/authentication/get-current-user-token
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function getCurrentUserToken(): array|Response
+    public function getCurrentUserToken(): mixed
     {
         // Set up call
         $url = 'auth/session/token';
@@ -49,16 +49,16 @@ trait Authentication
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets a full access token to use for subsequent API calls or embedded auth.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http%2Fapi-endpoints%2Fauthentication%2Fget-full-access-token
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
     public function getFullAccessToken(array $args = []): array|Response
     {
@@ -75,7 +75,7 @@ trait Authentication
         // Return the token
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
@@ -83,11 +83,11 @@ trait Authentication
      * NOTE: ThoughtSpot has recommended using full access tokens for embedding instead.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/authentication/get-object-access-token
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function getObjectAccessToken(array $args = []): array|Response
+    public function getObjectAccessToken(array $args = []): mixed
     {
         // Set up call
         $url = 'auth/token/object';
@@ -102,14 +102,14 @@ trait Authentication
         // Return the token
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Creates a login session for a ThoughtSpot user with Basic authentication.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/authentication/login
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return string|Response
      */
@@ -158,7 +158,7 @@ trait Authentication
      * Revokes the authentication token issues for the current user session.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/authentication/revoke-token
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -184,7 +184,7 @@ trait Authentication
      * Validates the authentication token.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/authentication/validate-token
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

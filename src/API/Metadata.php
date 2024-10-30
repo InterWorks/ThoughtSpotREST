@@ -10,7 +10,7 @@ trait Metadata
      * Deletes a metadata object from ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/delete-metadata
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -36,11 +36,11 @@ trait Metadata
      * Exports the TML representation of metadata objects.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/export-metadata-tml
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function exportMetadataTML(array $args = []): array|Response
+    public function exportMetadataTML(array $args = []): mixed
     {
         // Set up call
         $url = 'metadata/tml/export';
@@ -55,18 +55,18 @@ trait Metadata
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Exports the TML representation of metadata objects in paginated batches.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/export-metadata-tml-batched
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function exportMetadataTMLBatched(array $args = []): array|Response
+    public function exportMetadataTMLBatched(array $args = []): mixed
     {
         // Set up call
         $url = 'metadata/tml/export/batch';
@@ -81,18 +81,18 @@ trait Metadata
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Fetches the underlying SQL query data for an Answer object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/fetch-answer-sql-query
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function fetchAnswerSQLQuery(array $args = []): array|Response
+    public function fetchAnswerSQLQuery(array $args = []): mixed
     {
         // Set up call
         $url = 'metadata/answer/sql';
@@ -107,18 +107,18 @@ trait Metadata
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Fetches the underlying SQL query data for a Liveboard object and its visualizations.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/fetch-liveboard-sql-query
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function fetchLiveboardSQLQuery(array $args = []): array|Response
+    public function fetchLiveboardSQLQuery(array $args = []): mixed
     {
         // Set up call
         $url = 'metadata/liveboard/sql';
@@ -133,18 +133,18 @@ trait Metadata
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Imports objects into ThoughtSpot using TML.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/import-metadata-tml
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function importMetadataTML(array $args = []): array|Response
+    public function importMetadataTML(array $args = []): mixed
     {
         // Set up call
         $url = 'metadata/tml/import';
@@ -159,18 +159,18 @@ trait Metadata
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Searches metadata such as Liveboards and Answers.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/metadata/search-metadata
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchMetadata(array $args = []): array|Response
+    public function searchMetadata(array $args = []): mixed
     {
         // Set up call
         $url = 'metadata/search';
@@ -185,6 +185,6 @@ trait Metadata
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 }

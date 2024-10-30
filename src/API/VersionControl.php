@@ -10,11 +10,11 @@ trait VersionControl
      * Commits TML files of metadata objects to the Git branch configured on your instance.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/commit-branch
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function commitBranch(array $args = []): array|Response
+    public function commitBranch(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/branches/commit';
@@ -29,18 +29,18 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Connects the ThoughtSpot instance to a Git repository.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/create-config
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createConfig(array $args = []): array|Response
+    public function createConfig(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/config/create';
@@ -55,14 +55,14 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deletes Git repository configuration from your ThoughtSpot instance.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/delete-config
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -88,11 +88,11 @@ trait VersionControl
      * Deploys a commit and publish TML content to your ThoughtSpot instance.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/deploy-commit
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function deployCommit(array $args = []): array|Response
+    public function deployCommit(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/commits/deploy';
@@ -107,19 +107,19 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Reverts TML objects to a previous commit specified in the API request.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/revert-commit
      *
-     * @param string $commitID
-     * @param array  $args
+     * @param string               $commitID
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function revertCommit(string $commitID, array $args = []): array|Response
+    public function revertCommit(string $commitID, array $args = []): mixed
     {
         // Set up call
         $url = "vcs/git/commits/$commitID/revert";
@@ -134,18 +134,18 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets a list of commits for a given metadata object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/search-commits
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchCommits(array $args = []): array|Response
+    public function searchCommits(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/commits/search';
@@ -160,18 +160,18 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets Git repository connections configured on the ThoughtSpot instance.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/search-config
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchConfig(array $args = []): array|Response
+    public function searchConfig(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/config/search';
@@ -186,18 +186,18 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates Git repository configuration settings.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/update-config
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function updateConfig(array $args = []): array|Response
+    public function updateConfig(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/config/update';
@@ -212,18 +212,18 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Validates the content of your source branch against the objects in your destination environment.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/version-control/validate-merge
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function validateMerge(array $args = []): array|Response
+    public function validateMerge(array $args = []): mixed
     {
         // Set up call
         $url = 'vcs/git/branches/validate';
@@ -238,6 +238,6 @@ trait VersionControl
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 }

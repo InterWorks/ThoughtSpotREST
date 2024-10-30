@@ -10,11 +10,11 @@ trait Users
      * Activates a deactivated user account.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/activate-user
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function activateUser(array $args): array|Response
+    public function activateUser(array $args): mixed
     {
         // Set up call
         $url = 'users/activate';
@@ -29,14 +29,14 @@ trait Users
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates the password for the current user.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/change-user-password
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -62,11 +62,11 @@ trait Users
      * Creates a user in ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/create-user
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createUser(array $args): array|Response
+    public function createUser(array $args): mixed
     {
         // Set up call
         $url = 'users/create';
@@ -81,18 +81,18 @@ trait Users
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deactivates a user account.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/deactivate-user
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function deactivateUser(array $args): array|Response
+    public function deactivateUser(array $args): mixed
     {
         // Set up call
         $url = 'users/deactivate';
@@ -107,7 +107,7 @@ trait Users
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
@@ -140,7 +140,7 @@ trait Users
      * NOTE: If no arguments are provided, all user sessions will be logged out.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/force-logout-users
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -166,11 +166,11 @@ trait Users
      * Imports users into ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/import-users
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function importUsers(array $args): array|Response
+    public function importUsers(array $args): mixed
     {
         // Set up call
         $url = 'users/import';
@@ -185,14 +185,14 @@ trait Users
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Resets the password for a user in ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/reset-user-password
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -218,11 +218,11 @@ trait Users
      * Gets a list of users available on the ThoughtSpot system.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/search-users
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchUsers(array $args = []): array|Response
+    public function searchUsers(array $args = []): mixed
     {
         // Set up call
         $url = 'users/search';
@@ -237,15 +237,15 @@ trait Users
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates a user in ThoughtSpot.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/users/update-user
      *
-     * @param string $userIdentifier
-     * @param array  $args
+     * @param string               $userIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

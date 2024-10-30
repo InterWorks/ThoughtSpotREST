@@ -12,15 +12,19 @@ class ThoughtSpotRESTMock
     /**
      * Mock the ThoughtSpotREST class call function.
      *
-     * @param mixed  $expectedResponse
-     * @param string $url
-     * @param array  $args
-     * @param string $method
+     * @param mixed                $expectedResponse
+     * @param string               $url
+     * @param array<string, mixed> $args
+     * @param string               $method
      *
-     * @return mixed
+     * @return mixed[]|Response
      */
-    public static function mockWithCall($expectedResponse, $url, $args = [], $method = 'GET'): mixed
-    {
+    public static function mockWithCall(
+        mixed $expectedResponse,
+        string $url,
+        array $args = [],
+        string $method = 'GET'
+    ): mixed {
         // Mock the ThoughtSpotREST class, specifically to check if _authenticate is called
         $mock = Mockery::mock(ThoughtSpotREST::class)->makePartial()->shouldAllowMockingProtectedMethods();
 
@@ -34,6 +38,7 @@ class ThoughtSpotRESTMock
 
         // Create a mock for the Illuminate\Http\Client\Response class
         $responseMock = Mockery::mock(Response::class);
+        $responseMock->shouldReceive('body')->andReturn($expectedResponse);
         $responseMock->shouldReceive('cookies')->andReturn(
             new CookieJar(
                 strictMode : false,

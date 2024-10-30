@@ -10,11 +10,11 @@ trait Connections
      * Creates a connection to a data warehouse.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/connections/create-connection
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createConnection(array $args = []): array|Response
+    public function createConnection(array $args = []): mixed
     {
         // Set up call
         $url = 'connection/create';
@@ -29,14 +29,14 @@ trait Connections
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deletes a connection object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/connections/delete-connection
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -89,9 +89,9 @@ trait Connections
      *
      * @param string $connectionIdentifier
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function fetchConnectionDiffStatus(string $connectionIdentifier): array|Response
+    public function fetchConnectionDiffStatus(string $connectionIdentifier): mixed
     {
         // Set up call
         $url = "connections/fetch-connection-diff-status/$connectionIdentifier";
@@ -105,18 +105,18 @@ trait Connections
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets data connection objects.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/connections/search-connection
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchConnection(array $args = []): array|Response
+    public function searchConnection(array $args = []): mixed
     {
         // Set up call
         $url = 'connection/search';
@@ -131,14 +131,14 @@ trait Connections
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates a connection object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/connections/update-connection
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

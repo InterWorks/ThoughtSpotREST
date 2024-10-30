@@ -2,7 +2,6 @@
 
 use Mockery;
 use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Http;
 use InterWorks\ThoughtSpotREST\ThoughtSpotREST;
 
 test('constructor initializes correctly with valid configuration', function () {

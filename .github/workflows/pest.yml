@@ -1,4 +1,4 @@
-name: Run Tests
+name: Pest
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches:
-      - main 
+      - main
 
 jobs:
   test:

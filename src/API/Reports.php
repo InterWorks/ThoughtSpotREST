@@ -10,7 +10,7 @@ trait Reports
      * Exports an Answer in the given file format.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/reports/export-answer-report
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return string|Response
      */
@@ -36,7 +36,7 @@ trait Reports
      * Exports the data from a Liveboard and its visualization in a given file format.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/reports/export-liveboard-report
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return string|Response
      */

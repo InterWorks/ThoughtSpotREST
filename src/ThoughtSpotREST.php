@@ -58,7 +58,7 @@ class ThoughtSpotREST
     private bool $returnResponseObject;
     private string|null $secretKey;
     private string|null $token;
-    private string|null $url;
+    private string $url;
     private string|null $username;
 
     /**
@@ -69,14 +69,24 @@ class ThoughtSpotREST
     public function __construct(bool $returnResponseObject = false)
     {
         // Set the properties
-        $this->authType             = config('thoughtspotrest.auth');
+        $this->authType             = gettype(config('thoughtspotrest.auth')) === 'string'
+            ? config('thoughtspotrest.auth')
+            : 'basic';
         $this->cookies              = null; // Set later depending on auth type
-        $this->password             = config('thoughtspotrest.password');
+        $this->password             = gettype(config('thoughtspotrest.password')) === 'string'
+            ? config('thoughtspotrest.password')
+            : null;
         $this->returnResponseObject = $returnResponseObject;
-        $this->secretKey            = config('thoughtspotrest.secret_key');
+        $this->secretKey            = gettype(config('thoughtspotrest.secret_key')) === 'string'
+            ? config('thoughtspotrest.secret_key')
+            : null;
         $this->token                = null; // Set later depending on auth type
-        $this->url                  = rtrim(config('thoughtspotrest.url'), '/');
-        $this->username             = config('thoughtspotrest.username');
+        $this->url                  = gettype(config('thoughtspotrest.url')) === 'string'
+            ? rtrim(config('thoughtspotrest.url'), '/')
+            : '';
+        $this->username             = gettype(config('thoughtspotrest.username')) === 'string'
+            ? config('thoughtspotrest.username')
+            : null;
 
         // Validate the environment
         $this->_validateEnvironment();
@@ -113,7 +123,9 @@ class ThoughtSpotREST
     {
         // Check cache
         if (Cache::has($this->authCacheKey)) {
-            $this->token = Cache::get($this->authCacheKey);
+            $this->token = gettype(Cache::get($this->authCacheKey)) === 'string'
+                ? Cache::get($this->authCacheKey)
+                : null;
             return;
         }
 
@@ -124,9 +136,17 @@ class ThoughtSpotREST
         ]);
 
         // Set the token
-        $token       = $this->returnResponseObject
-            ? $tokenResponse->json()['token']
-            : $tokenResponse['token'];
+        if ($tokenResponse instanceof Response) {
+            /** @var array<string, mixed> $jsonData */
+            $jsonData = $tokenResponse->json();
+            $token    = gettype($jsonData['token']) === 'string'
+                ? $jsonData['token']
+                : null;
+        } else {
+            $token = gettype($tokenResponse['token']) === 'string'
+                ? $tokenResponse['token']
+                : null;
+        }
         $this->token = $token;
 
         // Cache the token
@@ -142,7 +162,9 @@ class ThoughtSpotREST
     {
         // Check cache
         if (Cache::has($this->authCacheKey)) {
-            $this->cookies = Cache::get($this->authCacheKey);
+            $this->cookies = gettype(Cache::get($this->authCacheKey)) === 'string'
+                ? Cache::get($this->authCacheKey)
+                : null;
             return;
         }
 
@@ -153,9 +175,13 @@ class ThoughtSpotREST
         ]);
 
         // Set the cookies
-        $cookies       = $this->returnResponseObject
-            ? $this->processCookies($response->cookies())
-            : $response;
+        if ($response instanceof Response) {
+            /** @var CookieJar $cookieData */
+            $cookieData = $response->cookies();
+            $cookies    = $this->processCookies($cookieData);
+        } else {
+            $cookies = $response;
+        }
         $this->cookies = $cookies;
 
         // Cache the cookies
@@ -171,7 +197,9 @@ class ThoughtSpotREST
     {
         // Check cache
         if (Cache::has($this->authCacheKey)) {
-            $this->token = Cache::get($this->authCacheKey);
+            $this->token = gettype(Cache::get($this->authCacheKey)) === 'string'
+                ? Cache::get($this->authCacheKey)
+                : null;
             return;
         }
 
@@ -182,9 +210,17 @@ class ThoughtSpotREST
         ]);
 
         // Set the token
-        $token       = $this->returnResponseObject
-            ? $tokenResponse->json()['token']
-            : $tokenResponse['token'];
+        if ($tokenResponse instanceof Response) {
+            /** @var array<string, mixed> $jsonData */
+            $jsonData = $tokenResponse->json();
+            $token    = gettype($jsonData['token']) === 'string'
+                ? $jsonData['token']
+                : null;
+        } else {
+            $token = gettype($tokenResponse['token']) === 'string'
+                ? $tokenResponse['token']
+                : null;
+        }
         $this->token = $token;
 
         // Cache the token
@@ -196,9 +232,9 @@ class ThoughtSpotREST
      *
      * @throws Exception
      *
-     * @param string      $url
-     * @param array|null  $args
-     * @param string|null $method
+     * @param string               $url
+     * @param array<string, mixed> $args
+     * @param string               $method
      *
      * @return Response
      */
@@ -267,9 +303,9 @@ class ThoughtSpotREST
     /**
      * Get the auth type for this instance.
      *
-     * @return string
+     * @return string|null
      */
-    public function getAuthType(): string
+    public function getAuthType(): string|null
     {
         return $this->authType;
     }
@@ -317,9 +353,9 @@ class ThoughtSpotREST
     /**
      * Get the username for this instance.
      *
-     * @return string
+     * @return string|null
      */
-    public function getUsername(): string
+    public function getUsername(): string|null
     {
         return $this->username;
     }

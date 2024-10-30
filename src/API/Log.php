@@ -10,11 +10,11 @@ trait Log
      * Fetches security audit logs.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/log/fetch-logs
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function fetchLogs(array $args = []): array|Response
+    public function fetchLogs(array $args = []): mixed
     {
         // Set up call
         $url = 'logs/fetch';
@@ -29,6 +29,6 @@ trait Log
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 }

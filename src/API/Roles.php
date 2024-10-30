@@ -10,11 +10,11 @@ trait Roles
      * Create a role.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/roles/create-role
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createRole(array $args = []): array|Response
+    public function createRole(array $args = []): mixed
     {
         // Set up call
         $url = 'roles/create';
@@ -29,7 +29,7 @@ trait Roles
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
@@ -61,11 +61,11 @@ trait Roles
      * Gets Roles configured on a ThoughtSpot instance.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/roles/search-roles
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchRoles(array $args = []): array|Response
+    public function searchRoles(array $args = []): mixed
     {
         // Set up call
         $url = 'roles/search';
@@ -80,19 +80,19 @@ trait Roles
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Update a role.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/roles/update-role
      *
-     * @param string $roleIdentifier
-     * @param array  $args
+     * @param string               $roleIdentifier
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function updateRole(string $roleIdentifier, array $args = []): array|Response
+    public function updateRole(string $roleIdentifier, array $args = []): mixed
     {
         // Set up call
         $url = "roles/$roleIdentifier/update";
@@ -107,6 +107,6 @@ trait Roles
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 }

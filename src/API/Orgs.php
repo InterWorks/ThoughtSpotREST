@@ -10,11 +10,11 @@ trait Orgs
      * Creates an Org for the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/orgs/create-org
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createOrg(array $args = []): array|Response
+    public function createOrg(array $args = []): mixed
     {
         // Set up call
         $url = 'orgs/create';
@@ -29,15 +29,15 @@ trait Orgs
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deletes an Org for the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/orgs/delete-org
      *
-     * @param int|string $orgIdentifier
-     * @param array      $args
+     * @param int|string           $orgIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -63,11 +63,11 @@ trait Orgs
      * Gets a list of Orgs for the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/orgs/search-orgs
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchOrgs(array $args = []): array|Response
+    public function searchOrgs(array $args = []): mixed
     {
         // Set up call
         $url = 'orgs/search';
@@ -82,15 +82,15 @@ trait Orgs
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates an Org for the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/orgs/update-org
      *
-     * @param int|string $orgIdentifier
-     * @param array      $args
+     * @param int|string           $orgIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

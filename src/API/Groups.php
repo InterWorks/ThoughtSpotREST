@@ -10,11 +10,11 @@ trait Groups
      * Creates a group on the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/groups/create-user-group
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createUserGroup(array $args = []): array|Response
+    public function createUserGroup(array $args = []): mixed
     {
         // Set up call
         $url = 'groups/create';
@@ -29,15 +29,15 @@ trait Groups
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deletes a group from the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/groups/delete-user-group
      *
-     * @param string $groupIdentifier
-     * @param array  $args
+     * @param string               $groupIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -63,11 +63,11 @@ trait Groups
      * Imports groups into the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/groups/import-user-groups
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function importUserGroups(array $args = []): array|Response
+    public function importUserGroups(array $args = []): mixed
     {
         // Set up call
         $url = 'groups/import';
@@ -82,18 +82,18 @@ trait Groups
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets a list of groups from the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/groups/search-user-groups
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchUserGroups(array $args = []): array|Response
+    public function searchUserGroups(array $args = []): mixed
     {
         // Set up call
         $url = 'groups/search';
@@ -108,15 +108,15 @@ trait Groups
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates a group on the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/groups/update-user-group
      *
-     * @param string $groupIdentifier
-     * @param array  $args
+     * @param string               $groupIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

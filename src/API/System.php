@@ -10,9 +10,9 @@ trait System
      * Gets the cluster system configuration information.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/system/get-system-config
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function getSystemConfig(): array|Response
+    public function getSystemConfig(): mixed
     {
         // Set up call
         $url = 'system/config';
@@ -26,16 +26,16 @@ trait System
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets the ThoughtSpot system information.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/system/get-system-information
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function getSystemInformation(): array|Response
+    public function getSystemInformation(): mixed
     {
         // Set up call
         $url = 'system';
@@ -49,16 +49,16 @@ trait System
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Gets the ThoughtSpot system configuration applied overrides.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/system/get-system-override-info
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function getSystemOverrideInfo(): array|Response
+    public function getSystemOverrideInfo(): mixed
     {
         // Set up call
         $url = 'system/config-overrides';
@@ -72,14 +72,14 @@ trait System
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates the ThoughtSpot system configuration.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/system/update-system-config
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -91,8 +91,8 @@ trait System
         // Make the call
         $response = $this->call(
             url   : $url,
-            method: 'POST',
-            body  : $args
+            args  : $args,
+            method: 'POST'
         );
 
         // Return the response

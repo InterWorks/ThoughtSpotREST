@@ -10,11 +10,11 @@ trait Schedules
      * Creates a Liveboard scheduled job.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/schedules/create-schedule
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createSchedule(array $args = []): array|Response
+    public function createSchedule(array $args = []): mixed
     {
         // Set up call
         $url = 'schedules/create';
@@ -29,7 +29,7 @@ trait Schedules
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
@@ -61,11 +61,11 @@ trait Schedules
      * Get a list of Liveboard scheduled jobs.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/schedules/search-schedules
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchSchedules(array $args = []): array|Response
+    public function searchSchedules(array $args = []): mixed
     {
         // Set up call
         $url = 'schedules/search';
@@ -80,15 +80,15 @@ trait Schedules
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Updates a Liveboard scheduled job.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/schedules/update-schedule
      *
-     * @param string $scheduleIdentifier
-     * @param array  $args
+     * @param string               $scheduleIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */

@@ -10,7 +10,7 @@ trait Tags
      * Assigns a tag to an object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/tags/assign-tag
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -36,11 +36,11 @@ trait Tags
      * Creates a tag on the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/tags/create-tag
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function createTag(array $args = []): array|Response
+    public function createTag(array $args = []): mixed
     {
         // Set up call
         $url = 'tags/create';
@@ -55,15 +55,15 @@ trait Tags
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Deletes a tag on the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/tags/delete-tag
      *
-     * @param string $tagIdentifier
-     * @param array  $args
+     * @param string               $tagIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -89,11 +89,11 @@ trait Tags
      * Gets a list of tags available on the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/tags/search-tags
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
-     * @return array|Response
+     * @return mixed[]|Response
      */
-    public function searchTags(array $args = []): array|Response
+    public function searchTags(array $args = []): mixed
     {
         // Set up call
         $url = 'tags/search';
@@ -108,14 +108,14 @@ trait Tags
         // Return the response
         return $this->returnResponseObject
             ? $response
-            : $response->json();
+            : (array) $response->json();
     }
 
     /**
      * Unassigns a tag from an object.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/tags/unassign-tag
      *
-     * @param array $args
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
@@ -141,8 +141,8 @@ trait Tags
      * Updates a tag on the ThoughtSpot cluster.
      * https://developers.thoughtspot.com/docs/restV2-playground?apiResourceId=http/api-endpoints/tags/update-tag
      *
-     * @param string $tagIdentifier
-     * @param array  $args
+     * @param string               $tagIdentifier
+     * @param array<string, mixed> $args
      *
      * @return bool|Response
      */
