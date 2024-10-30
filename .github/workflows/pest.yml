@@ -18,7 +18,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2' # Adjust PHP version as necessary
+        php-version: '8.2'
         extensions: mbstring, pdo, json, bcmath, ctype
 
     - name: Clear Composer Cache
