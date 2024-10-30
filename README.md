@@ -1,7 +1,13 @@
-<a href="https://github.com/InterWorks/ThoughtSpotREST/actions"><img alt="GitHub Workflow Status (Pest)" src="https://img.shields.io/github/actions/workflow/status/InterWorks/ThoughtSpotREST/pest.yml?branch=main&label=Pest&style=round-square"></a>
-<a href="https://github.com/InterWorks/ThoughtSpotREST/actions"><img alt="GitHub Workflow Status (PHPStan)" src="https://img.shields.io/github/actions/workflow/status/InterWorks/ThoughtSpotREST/phpstan.yml?branch=main&label=PHPStan&style=round-square"></a>
-<a href="https://packagist.org/packages/InterWorks/ThoughtSpotREST"><img alt="Latest Version" src="https://img.shields.io/packagist/v/InterWorks/ThoughtSpotREST"></a>
-<a href="https://packagist.org/packages/InterWorks/ThoughtSpotREST"><img alt="License" src="https://img.shields.io/github/license/InterWorks/ThoughtSpotREST"></a>
+<p align="center">
+    <p align="center">
+        <a href="https://github.com/InterWorks/ThoughtSpotREST/actions"><img alt="GitHub Workflow Status (Pest)" src="https://img.shields.io/github/actions/workflow/status/InterWorks/ThoughtSpotREST/pest.yml?branch=main&label=Pest&style=round-square"></a>
+        <a href="https://github.com/InterWorks/ThoughtSpotREST/actions"><img alt="GitHub Workflow Status (PHPStan)" src="https://img.shields.io/github/actions/workflow/status/InterWorks/ThoughtSpotREST/phpstan.yml?branch=main&label=PHPStan&style=round-square"></a>
+        <a href="https://packagist.org/packages/InterWorks/ThoughtSpotREST"><img alt="Latest Version" src="https://img.shields.io/packagist/v/InterWorks/ThoughtSpotREST"></a>
+        <a href="https://packagist.org/packages/InterWorks/ThoughtSpotREST"><img alt="License" src="https://img.shields.io/github/license/InterWorks/ThoughtSpotREST"></a>
+    </p>
+</p>
+
+-----
 
 # ThoughtSpot REST API for Laravel
 
