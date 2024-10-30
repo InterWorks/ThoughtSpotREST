@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 use InterWorks\ThoughtSpotREST\ThoughtSpotREST;
 
 test('constructor initializes correctly with valid configuration', function () {
-    // Mock the ThoughtSpotREST class, specifically to check if _authenticate is called
+    // Mock the ThoughtSpotREST class
     $mock = Mockery::mock(ThoughtSpotREST::class)->makePartial()->shouldAllowMockingProtectedMethods();
 
     // Ensure the _authenticate method is called in the constructor
@@ -38,4 +38,34 @@ test('constructor throws exception with invalid configuration', function () {
 
     // Instantiate ThoughtSpotREST to trigger exception
     new ThoughtSpotREST();
+});
+
+test('can authenticate', function () {
+    // Mock the ThoughtSpotREST class
+    $mock = Mockery::mock(ThoughtSpotREST::class)->makePartial()->shouldAllowMockingProtectedMethods();
+
+    // Create a mock for the Illuminate\Http\Client\Response class
+    $expectedResponse = ['token' => 'testToken'];
+    $responseMock     = Mockery::mock(Response::class);
+    $responseMock->shouldReceive('json')->andReturn($expectedResponse);
+
+    // Mock the call method to return the response mock
+    $url    = 'auth/token/full';
+    $args   = [
+        'username' => 'username',
+        'password' => 'password',
+    ];
+    $method = 'POST';
+    $mock->shouldReceive('call')
+        ->with($url, $args, $method)
+        ->andReturn($responseMock);
+
+    // Instantiate the class to trigger the constructor
+    $mock->__construct();
+
+    // Validate the token was set to the mocked value
+    expect($mock->getToken())->toBe('testToken');
+
+    // Clean up Mockery expectations
+    Mockery::close();
 });
