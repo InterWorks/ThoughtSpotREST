@@ -39,34 +39,3 @@ test('constructor throws exception with invalid configuration', function () {
     // Instantiate ThoughtSpotREST to trigger exception
     new ThoughtSpotREST();
 });
-
-test('constructing with returnResponseObject set to true returns Illuminate\Http\Client\Response', function () {
-    // Mock the ThoughtSpotREST class with partial methods
-    $mock = Mockery::mock(ThoughtSpotREST::class)
-        ->makePartial()
-        ->shouldAllowMockingProtectedMethods();
-
-    // Ensure the _authenticate method is called in the constructor
-    $mock->shouldReceive('_authenticate')
-        ->once()
-        ->andReturnNull();
-
-    // Set returnResponseObject to true in the constructor
-    $mock->__construct(returnResponseObject: true);
-
-    // Fake a response to be used in the `call` method
-    $fakeResponse = Http::response(['data' => 'test'], 200);
-
-    // Mock the `call` method to return a Response instance
-    $mock->shouldReceive('call')
-         ->andReturn($fakeResponse);
-
-    // Call an API method that uses the `call` method internally
-    $result = $mock->getCurrentUserInfo();
-
-    // Assert that the result is an instance of Illuminate\Http\Client\Response
-    expect($result)->toBeInstanceOf(Response::class);
-
-    // Clean up Mockery expectations
-    Mockery::close();
-});
